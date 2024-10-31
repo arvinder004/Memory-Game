@@ -1,12 +1,14 @@
-import { useState } from 'react';
-// import "src/App.css";
+// import './App.css'
 import MemoryGame from "./components/memory-game";
 
 function App() {
   
   return (
     <>
+    <div className="bg-[url('public/images/bg-img.jpg')]">
+    
       <MemoryGame/>
+    </div>
     </>
   )
 }
