@@ -72,11 +72,11 @@ export default function MemoryGame() {
 
     const isSolved = (id) => solved.includes(id);
 
-    useEffect(()=>{
-        if(solved.length === cards.length && cards.length>0){
+    useEffect(() => {
+        if (solved.length === cards.length && cards.length > 0) {
             setWon(true)
         }
-    },[solved, cards])
+    }, [solved, cards])
 
     return (
         <>
@@ -85,8 +85,40 @@ export default function MemoryGame() {
 
                 {/* input */}
                 <div className="mb-4">
-                    <label htmlFor="gridSize" className="mr-2">Grid Size : (max 10)</label>
-                    <input type="number" name="" id="gridSize" min={"2"} max={"10"} value={gridSize} onChange={handleGridSizeChange} className="border-2 border-gray-300 px-2 py-1" />
+                    {/* <label htmlFor="gridSize" className="mr-2">Grid Size : (max 10)</label>
+                    <input type="number" name="" id="gridSize" min={"2"} max={"10"} value={gridSize} onChange={handleGridSizeChange} className="border-2 border-gray-300 px-2 py-1" /> */}
+                    <button
+                        className="m-4 p-4 bg-red-500 text-white rounded hover:bg-red-400 transition-colors"
+                        onClick={()=>{setGridSize(2)}}
+                    >
+                        2 x 2
+                    </button>
+                    <button
+                        className="m-4 p-4 bg-red-500 text-white rounded hover:bg-red-400 transition-colors"
+                        onClick={()=>{setGridSize(4)}}
+                    >
+                        4 x 4
+                    </button>
+                    <button
+                        className="m-4 p-4 bg-red-500 text-white rounded hover:bg-red-400 transition-colors"
+                        onClick={()=>{setGridSize(6)}}
+                    >
+                        6 x 6
+                    </button>
+                    <button
+                        className="m-4 p-4 bg-red-500 text-white rounded hover:bg-red-400 transition-colors"
+                        onClick={()=>{setGridSize(8)}}
+                    >
+                        8 x 8
+                    </button>
+                    {/* <button
+                        className="m-4 p-4 bg-red-500 text-white rounded hover:bg-red-400 transition-colors"
+                        onClick={()=>{setGridSize(10)}}
+                    >
+                        10 x 10
+                    </button> */}
+
+
                 </div>
 
                 {/* Game Board */}
@@ -98,13 +130,12 @@ export default function MemoryGame() {
                         return (
                             <div
                                 key={card.id}
-                                onClick={() => handleClick(card.id)} className={`aspect-square flex items-center justify-center text-xl font-bold rounded-lg cursor-pointer transition-all duration-300 ${
-                                    isFlipped(card.id)
+                                onClick={() => handleClick(card.id)} className={`aspect-square flex items-center justify-center text-xl font-bold rounded-lg cursor-pointer transition-all duration-300 ${isFlipped(card.id)
                                         ? isSolved(card.id)
-                                            ? "bg-green-500 text-white" 
+                                            ? "bg-green-500 text-white"
                                             : "bg-blue-500 text-white"
                                         : "bg-gray-300 text-gray-400"
-                                }`}
+                                    }`}
                             >
                                 {isFlipped(card.id) ? card.number : "?"}
                             </div>
